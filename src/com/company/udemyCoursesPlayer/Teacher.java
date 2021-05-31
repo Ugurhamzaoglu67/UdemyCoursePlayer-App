@@ -11,5 +11,11 @@ public class Teacher extends Student {
         this.locationOfTeacher = locationOfTeacher;
     }
 
-
+    @Override
+    public String toString() {
+        return super.toString() +"Teacher{" +
+                "branchOfTeacher='" + branchOfTeacher + '\'' +
+                ", locationOfTeacher='" + locationOfTeacher + '\'' +
+                '}';
+    }
 }

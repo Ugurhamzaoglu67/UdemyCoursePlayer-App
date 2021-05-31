@@ -1,21 +1,19 @@
 package com.company.udemyCoursesPlayer;
 
 
+import java.util.ArrayList;
 
 public class Student  extends Person {
     private int studentNumber;
-
+    private ArrayList<Course> attendCourses;
 
 
     // CONSTRUCTOR
     public Student(String name, int age,String userName, String whoAreu, int studentNumber) {
         super(name, age, userName, whoAreu);
+        setStudentNumber(studentNumber);
+        this.attendCourses = new ArrayList<>();
 
-        if(studentNumber >= 0){
-            this.studentNumber = studentNumber;
-        }else {
-            System.out.println("Student number must be greater than zero!");
-        }
 
     }
 
@@ -26,13 +24,18 @@ public class Student  extends Person {
     }
 
     public void setStudentNumber(int studentNumber) {
-        this.studentNumber = studentNumber;
+
+        if(studentNumber >= 0){
+            this.studentNumber = studentNumber;
+        }else {
+            System.out.println("Student number must be greater than zero!");
+        }
     }
 
 
     @Override
     public String toString() {
-        return "Student{" +
+        return super.toString()+" Student{" +
                 "studentNumber=" + studentNumber +
                 '}';
     }

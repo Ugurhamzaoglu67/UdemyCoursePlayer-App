@@ -7,7 +7,12 @@ public class Course {
     private String courseTitle;
     private ArrayList<Lesson> lessonsInCourse; // 1  kursta, 1 den fazla kurs olcağından burda tutuyoruz.
     private ArrayList<Teacher> coursesInTeachers; // 1 kursun, 1'den fazla eğitmeni olabilir
+    private ArrayList<Student> studentsInTheCourse;
     private boolean hasItBeenPublished; // yayındamı?
+
+
+
+
 
     //Constructor
     public Course(String courseTitle, Teacher headTeacher) {
@@ -15,6 +20,7 @@ public class Course {
         this.courseTitle = courseTitle;
         this.lessonsInCourse = new ArrayList<>();
         this.coursesInTeachers = new ArrayList<>();
+        this.studentsInTheCourse = new ArrayList<>();  //initialized...
         coursesInTeachers.add(headTeacher);
         this.hasItBeenPublished = false;
 
@@ -43,7 +49,9 @@ public class Course {
         return lessonsInCourse.size();
     }
 
-    //total lesson minutes in the course
+
+
+    //total lesson minutes in the course (Toplam kurs dakkası)
     public int totalLessonMinutesCourse() {
         double totalMinute = 0;
         for(Lesson lesson : lessonsInCourse ){
@@ -52,5 +60,28 @@ public class Course {
 
         return (int)totalMinute;
     }
+
+
+    // course publish control ( Kursa yayın kontrol)
+    public boolean controlCoursePublish() {
+        if(lessonsInCourse.size() >=5 && totalLessonMinutesCourse() >=60){
+            hasItBeenPublished = true;
+            return true;
+
+        }else return false;
+    }
+
+
+
+    //add students to course (Kursa Öğrenci Ekle)
+    public void addStudentsToCourse(Student newStudent) {
+        if(controlCoursePublish()){
+            studentsInTheCourse.add(newStudent);
+            System.out.println(newStudent+" Student added...");
+        }
+    }
+
+
+
 
 }
