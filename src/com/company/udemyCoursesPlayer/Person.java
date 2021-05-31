@@ -8,6 +8,9 @@ public  abstract class Person {
     private String whoAreu;
     private int age;
 
+    public Person() {
+
+    }
 
 
     public Person(String name, int age, String userName, String whoAreu) {
