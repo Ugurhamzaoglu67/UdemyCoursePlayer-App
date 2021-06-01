@@ -5,6 +5,7 @@ import com.company.udemyCoursesPlayer.Lesson;
 import com.company.udemyCoursesPlayer.Student;
 import com.company.udemyCoursesPlayer.Teacher;
 
+
 import java.util.LinkedList;
 import java.util.ListIterator;
 import java.util.Scanner;
@@ -130,11 +131,15 @@ public class Main {
 
     }
 
+    // PLAY WATCH LIST
     public static void playToWatchList(LinkedList<Lesson> playList) {
+
         Scanner scanner = new Scanner(System.in);
         boolean quit = true;
+        boolean myNextIterator = true;
 
         ListIterator<Lesson> iterator = playList.listIterator();
+
         if(playList.size() <= 0){
             System.out.println("No courses have been added yet.");
         }else {
@@ -152,7 +157,49 @@ public class Main {
                     System.out.println("Exiting the application, Good By...");
                     quit = false;  break;
 
-                case 9:
+                case 1:
+                    // Arabayı geri vitese almak gibi, önce durdur sonra ileriye..
+                    if(!myNextIterator){ // TEKRAR ETMEYEN ITERATOR İÇİN
+                        myNextIterator = true; //Araba durdu, ileri al şimdi
+                        if(iterator.hasNext()){
+                            iterator.next();
+                        }
+                    }
+
+                    if(iterator.hasNext()){
+                        Lesson firstLesson = iterator.next();
+                        System.out.println("Currently Playing oOoOoOo -> Ders no : "+firstLesson.getLessonNumber()+" "+firstLesson.getLessonName()+", time : "+firstLesson.getLessonMinute());
+
+                    }else {
+                        System.out.println("No lesson to show!");
+                    }
+                    break;
+
+                case 2:
+                    if(myNextIterator) { // TEKRAR ETMEYEN ITERATOR İÇİN
+                        myNextIterator = false; // Arabayı geri vitese almak gibi, önce durdur sonra geriye..
+
+                        if(iterator.hasPrevious()){
+                            iterator.previous();
+                        }
+
+                    }
+
+                    if(iterator.hasPrevious()){
+                        Lesson firstLesson = iterator.previous();
+                        System.out.println("Currently Playing oOoOoOo -> Ders no : "+firstLesson.getLessonNumber()+" "+firstLesson.getLessonName()+", time : "+firstLesson.getLessonMinute());
+
+                    }
+                    else {
+                        System.out.println("No lesson to show!");
+                    }
+                    break;
+
+                case 3:
+                    System.out.println("/_______________________________WATCHING LIST_______________________/");
+                    showingWatchList(playList); break;
+
+                case 4:
                     showMenus(); break;
 
                 default:
@@ -163,12 +210,35 @@ public class Main {
         }
     }
 
+    // WATCH LIST
+    private static void showingWatchList (LinkedList<Lesson> showList) {
+        ListIterator<Lesson> iterator = showList.listIterator();
 
+        if(showList.size() <= 0){
+            System.out.println("No courses have been added yet.");
+            return;
 
+        }else {
+            while(iterator.hasNext()){
+                Lesson firstLesson = iterator.next();
+                System.out.println("Ders no : "+firstLesson.getLessonNumber()+" "+firstLesson.getLessonName()+", time : "+firstLesson.getLessonMinute());
+
+            }
+        }
+
+    }
+
+    // SHOW MENUS
     private static void showMenus() {
         System.out.println("\n\n************** UDEMY COURSE PLAYER APP *******************");
-        System.out.println("0 - Exit This App\n" +
-                "9- show Menus");
+        System.out.println(
+                "0 - Exit This App\n" +
+                "1 - Go to NEXT lesson\n"+
+                "2 - Go to PREVIOUS lesson\n"+
+                "3 - show all watch list\n"+
+                "4- show Menus\n"
+        );
+
     }
 
 
