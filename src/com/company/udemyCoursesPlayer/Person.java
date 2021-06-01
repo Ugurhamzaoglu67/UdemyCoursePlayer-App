@@ -3,6 +3,7 @@ package com.company.udemyCoursesPlayer;
 
 
 public  abstract class Person {
+
     private String name;
     private String userName;
     private String whoAreu;

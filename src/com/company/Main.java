@@ -57,8 +57,14 @@ public class Main {
         Lesson javaLesson6 = new Lesson("Java Spring Boot",6,25.8);
         Lesson javaLesson7 = new Lesson("Java & React",7,57.3);
 
+
         // NODE.JS LESSON
         Lesson nodeJsLesson1 = new Lesson("Node.js Mongoose",1,25.5);
+        Lesson nodeJsLesson2 = new Lesson("Node.js ders 1",2,15.5);
+        Lesson nodeJsLesson3 = new Lesson("Node.js ders 2",3,35.5);
+        Lesson nodeJsLesson4 = new Lesson("Node.js ders 3",4,25.3);
+        Lesson nodeJsLesson5 = new Lesson("Node.js ders 4",5,7.5);
+        Lesson nodeJsLesson6 = new Lesson("Node.js ders 5",6,25.5);
 
 
         // JAVA COURSE
@@ -77,7 +83,15 @@ public class Main {
         javaCourse.addLessonToCourse(javaLesson5);
         javaCourse.addLessonToCourse(javaLesson6);
 
+
         nodeJsCourse.addLessonToCourse(nodeJsLesson1);
+        nodeJsCourse.addLessonToCourse(nodeJsLesson2);
+        nodeJsCourse.addLessonToCourse(nodeJsLesson3);
+        nodeJsCourse.addLessonToCourse(nodeJsLesson4);
+        nodeJsCourse.addLessonToCourse(nodeJsLesson5);
+        nodeJsCourse.addLessonToCourse(nodeJsLesson6);
+
+
 
         System.out.println("\n_____add teacher_____");
         javaCourse.addTeachertoCourse(javaTeacher2Antonio);
@@ -91,9 +105,20 @@ public class Main {
         std1Samet.joinTheCourse(javaCourse);
         std1Samet.joinTheCourse(nodeJsCourse);
 
+
+
         System.out.println("\n___ watch lesson list________ ");
 
         std1Samet.watchLessonList(javaLesson4);
         std1Samet.watchLessonList(nodeJsLesson1);
+        std1Samet.watchLessonList(nodeJsLesson2);
+        std1Samet.watchLessonList(nodeJsLesson3);
+
+
+        System.out.println("\n___ leave the course________ ");
+        std1Samet.exitCourse(javaCourse);
+
+
+
     }
 }

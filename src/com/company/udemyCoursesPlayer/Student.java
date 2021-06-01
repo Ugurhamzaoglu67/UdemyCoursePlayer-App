@@ -29,7 +29,7 @@ public class Student  extends Person {
 
     public void setStudentNumber(int studentNumber) {
 
-        if(studentNumber >= 0){
+        if(studentNumber > 0){
             this.studentNumber = studentNumber;
         }else {
             System.out.println("Student number must be greater than zero!");
@@ -57,6 +57,17 @@ public class Student  extends Person {
             System.out.println("This course not published!");
         }
     }
+
+    //EXIT COURSE
+    public void exitCourse(Course courseToLeave) {
+        if(courseToLeave.controlCoursePublish() && attendCourses.contains(courseToLeave)){
+            attendCourses.remove(courseToLeave);
+            System.out.println("successfully removed from the -> "+courseToLeave);
+        } else {
+            System.out.println("Çıkmak için gerekli şartları yerine getirmelisin..");
+        }
+    }
+
 
     //WATCHLESSONLIST
     public void watchLessonList(Lesson lessonToWatch) {
