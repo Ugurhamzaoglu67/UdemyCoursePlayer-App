@@ -55,13 +55,16 @@ public class Main {
         Lesson javaLesson4 = new Lesson("Java Algorithm",4,25.8);
         Lesson javaLesson5 = new Lesson("Java Spring",5,35.8);
         Lesson javaLesson6 = new Lesson("Java Spring Boot",6,25.8);
+        Lesson javaLesson7 = new Lesson("Java & React",7,57.3);
 
         // NODE.JS LESSON
         Lesson nodeJsLesson1 = new Lesson("Node.js Mongoose",1,25.5);
 
 
-        // COURSES
+        // JAVA COURSE
         Course javaCourse = new Course("100 Hours JAVA",javaTeacher);
+
+        // NODEJS COURSE
         Course nodeJsCourse = new Course("80 Hours Node.js",nodeJsTeacher);
 
 
@@ -86,6 +89,11 @@ public class Main {
 
         System.out.println("\n___ join the course________ ");
         std1Samet.joinTheCourse(javaCourse);
+        std1Samet.joinTheCourse(nodeJsCourse);
 
+        System.out.println("\n___ watch lesson list________ ");
+
+        std1Samet.watchLessonList(javaLesson4);
+        std1Samet.watchLessonList(nodeJsLesson1);
     }
 }

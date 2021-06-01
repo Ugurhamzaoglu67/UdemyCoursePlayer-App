@@ -2,10 +2,13 @@ package com.company.udemyCoursesPlayer;
 
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class Student  extends Person {
     private int studentNumber;
     private ArrayList<Course> attendCourses;
+    private LinkedList<Lesson>  watchLessonList;
+
 
 
     // CONSTRUCTOR
@@ -13,6 +16,7 @@ public class Student  extends Person {
         super(name, age, userName, whoAreu);
         setStudentNumber(studentNumber);
         this.attendCourses = new ArrayList<>();
+        this.watchLessonList = new LinkedList<>();
 
 
     }
@@ -40,6 +44,8 @@ public class Student  extends Person {
                 '}';
     }
 
+
+    //JOIN COURSE
     public void joinTheCourse(Course courseToAttend) {
 
         if(courseToAttend.controlCoursePublish()){
@@ -51,4 +57,26 @@ public class Student  extends Person {
             System.out.println("This course not published!");
         }
     }
+
+    //WATCHLESSONLIST
+    public void watchLessonList(Lesson lessonToWatch) {
+        if(attendCourses.size() > 0){
+            boolean lessonFound  = false;
+
+            for( Course course: attendCourses){
+                    if((course.getLessonsInCourse().contains(lessonToWatch))){
+                        watchLessonList.add(lessonToWatch);
+                        System.out.println(lessonToWatch+" add to -> watch List...");
+                        lessonFound = true;
+                        break;
+                    }
+            }
+
+            if(!lessonFound){
+                System.out.println("This lesson not found or your not permission!!!");
+            }
+
+        }
+    }
+
 }

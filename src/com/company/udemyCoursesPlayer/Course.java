@@ -97,4 +97,8 @@ public class Course {
     public String getCourseTitle() {
         return courseTitle;
     }
+
+    public ArrayList<Lesson> getLessonsInCourse() {
+        return lessonsInCourse;
+    }
 }
