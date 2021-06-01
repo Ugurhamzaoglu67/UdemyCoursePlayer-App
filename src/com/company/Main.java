@@ -5,11 +5,16 @@ import com.company.udemyCoursesPlayer.Lesson;
 import com.company.udemyCoursesPlayer.Student;
 import com.company.udemyCoursesPlayer.Teacher;
 
+import java.util.LinkedList;
+import java.util.ListIterator;
+import java.util.Scanner;
+
 public class Main {
 
     public static void main(String[] args) {
 
         printMyObjects();
+
 
     }
 
@@ -115,10 +120,56 @@ public class Main {
         std1Samet.watchLessonList(nodeJsLesson3);
 
 
-        System.out.println("\n___ leave the course________ ");
-        std1Samet.exitCourse(javaCourse);
+       // System.out.println("\n___ leave the course________ ");
+        //std1Samet.exitCourse(javaCourse);
 
+
+        System.out.println("\n_______Current watch  course_______ ");
+        playToWatchList(std1Samet.getWatchLessonList());
 
 
     }
+
+    public static void playToWatchList(LinkedList<Lesson> playList) {
+        Scanner scanner = new Scanner(System.in);
+        boolean quit = true;
+
+        ListIterator<Lesson> iterator = playList.listIterator();
+        if(playList.size() <= 0){
+            System.out.println("No courses have been added yet.");
+        }else {
+            Lesson firstLesson = iterator.next();
+            System.out.println("Current watch lesson : "+firstLesson.getLessonName()+", time : "+firstLesson.getLessonMinute());
+        }
+
+        showMenus();
+        while(quit) {
+            System.out.print("Make your Choice, Red pill ? or Blue pill ? :) :  ");
+            int selection = scanner.nextInt();
+
+            switch (selection){
+                case 0:
+                    System.out.println("Exiting the application, Good By...");
+                    quit = false;  break;
+
+                case 9:
+                    showMenus(); break;
+
+                default:
+                    System.out.println("404 eror");
+
+            }
+
+        }
+    }
+
+
+
+    private static void showMenus() {
+        System.out.println("\n\n************** UDEMY COURSE PLAYER APP *******************");
+        System.out.println("0 - Exit This App\n" +
+                "9- show Menus");
+    }
+
+
 }

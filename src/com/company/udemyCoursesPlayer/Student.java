@@ -90,4 +90,11 @@ public class Student  extends Person {
         }
     }
 
+
+    //GETTER
+    public LinkedList<Lesson> getWatchLessonList() {
+        return watchLessonList;
+    }
+
+
 }
