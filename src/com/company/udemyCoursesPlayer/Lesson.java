@@ -9,7 +9,7 @@ public class Lesson {
 
 
     //Constructor
-    public Lesson(String lessonName, int lessonNumber, int lessonMinute) {
+    public Lesson(String lessonName, int lessonNumber, double lessonMinute) {
         this.lessonName = lessonName;
         this.lessonNumber = lessonNumber;
         this.lessonMinute = lessonMinute;

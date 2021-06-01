@@ -1,5 +1,7 @@
 package com.company;
 
+import com.company.udemyCoursesPlayer.Course;
+import com.company.udemyCoursesPlayer.Lesson;
 import com.company.udemyCoursesPlayer.Student;
 import com.company.udemyCoursesPlayer.Teacher;
 
@@ -12,14 +14,14 @@ public class Main {
     }
 
     public static void printMyObjects() {
-        Student std1 = new Student(
+        Student std1Samet = new Student(
                 "Samet",
                 27,
                 "samet_27",
                 "Hello from samet",134);
 
 
-        Teacher teacher1 = new Teacher(
+        Teacher javaTeacher = new Teacher(
                 "Udemy JAVA TEACHER",
                 38,
                 "java_teacher",
@@ -28,9 +30,62 @@ public class Main {
                 "My Branch JAVA",
                 "Java world");
 
-        System.out.println(std1);
-        System.out.println("**************");
-        System.out.println(teacher1);
+        Teacher javaTeacher2Antonio = new Teacher(
+                "Udemy JAVA TEACHER2 antonio",
+                28,
+                "antonio_java_teacher",
+                "I'M a JAVA TEACHER two ( antonio)",
+                4,
+                "My Branch JAVA & JDBC",
+                "Java City");
+
+        Teacher nodeJsTeacher = new Teacher(
+                "Udemy Node.js TEACHER",
+                28,
+                "nodejs_teacher",
+                "I'M a NODE.js TEACHER",
+                2,
+                "My Branch Node.js",
+                "my location Node.js...");
+
+        // JAVA LESSON
+        Lesson javaLesson1 = new Lesson("Java OOP",1,37.6);
+        Lesson javaLesson2 = new Lesson("Java Collections",2,15.6);
+        Lesson javaLesson3 = new Lesson("Java Data Structures",3,55.8);
+        Lesson javaLesson4 = new Lesson("Java Algorithm",4,25.8);
+        Lesson javaLesson5 = new Lesson("Java Spring",5,35.8);
+        Lesson javaLesson6 = new Lesson("Java Spring Boot",6,25.8);
+
+        // NODE.JS LESSON
+        Lesson nodeJsLesson1 = new Lesson("Node.js Mongoose",1,25.5);
+
+
+        // COURSES
+        Course javaCourse = new Course("100 Hours JAVA",javaTeacher);
+        Course nodeJsCourse = new Course("80 Hours Node.js",nodeJsTeacher);
+
+
+
+        System.out.println("\n_____add teacher to the course______");
+        javaCourse.addLessonToCourse(javaLesson1);
+        javaCourse.addLessonToCourse(javaLesson2);
+        javaCourse.addLessonToCourse(javaLesson3);
+        javaCourse.addLessonToCourse(javaLesson4);
+        javaCourse.addLessonToCourse(javaLesson5);
+        javaCourse.addLessonToCourse(javaLesson6);
+
+        nodeJsCourse.addLessonToCourse(nodeJsLesson1);
+
+        System.out.println("\n_____add teacher_____");
+        javaCourse.addTeachertoCourse(javaTeacher2Antonio);
+
+        System.out.println("\n_____delete teacher to the course______");
+        javaCourse.deleteTeacherFromCourse(javaTeacher);
+        javaCourse.deleteTeacherFromCourse(javaTeacher2Antonio);
+
+
+        System.out.println("\n___ join the course________ ");
+        std1Samet.joinTheCourse(javaCourse);
 
     }
 }

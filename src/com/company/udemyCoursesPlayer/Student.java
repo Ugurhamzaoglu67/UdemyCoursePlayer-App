@@ -39,4 +39,16 @@ public class Student  extends Person {
                 "studentNumber=" + studentNumber +
                 '}';
     }
+
+    public void joinTheCourse(Course courseToAttend) {
+
+        if(courseToAttend.controlCoursePublish()){
+            courseToAttend.getStudentsInTheCourse().add(this);
+            attendCourses.add(courseToAttend);
+            System.out.println(getName()+" -> "+courseToAttend.getCourseTitle()+ " attended the course...");
+
+        } else {
+            System.out.println("This course not published!");
+        }
+    }
 }

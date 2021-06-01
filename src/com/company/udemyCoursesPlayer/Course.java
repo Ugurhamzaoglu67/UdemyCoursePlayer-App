@@ -21,27 +21,45 @@ public class Course {
         this.lessonsInCourse = new ArrayList<>();
         this.coursesInTeachers = new ArrayList<>();
         this.studentsInTheCourse = new ArrayList<>();  //initialized...
-        coursesInTeachers.add(headTeacher);
+        coursesInTeachers.add(0,headTeacher);
         this.hasItBeenPublished = false;
 
     }
 
     // add teachers to course (Kursa öğretmen ekle)
     public void addTeachertoCourse(Teacher newTeacher) {
-        coursesInTeachers.add(newTeacher);
-        System.out.println(newTeacher+" Teacher added...");
+
+        if(!coursesInTeachers.contains(newTeacher)){
+            coursesInTeachers.add(newTeacher);
+
+            System.out.println(newTeacher+" Teacher added...");
+        }
+        else {
+            System.out.println(newTeacher.getName()+ " This Teacher already exists!");
+        }
+
+
+
     }
+
 
     //delete teacher from course (Kurstan öğretmen sil)
     public void deleteTeacherFromCourse(Teacher deleteTeacher) {
-        coursesInTeachers.remove(deleteTeacher);
-        System.out.println(deleteTeacher+" Teacher was deleted!");
+        if(  deleteTeacher.getName().equals(coursesInTeachers.get(0).getName())  ){
+            System.out.println(deleteTeacher.getName()+" Head TEACHER can not be deleted");
+        }
+        else {
+            coursesInTeachers.remove(deleteTeacher);
+            System.out.println(deleteTeacher.getName()+" -> Teacher was deleted!");
+        }
+
+
     }
 
     //add lesson to course (Kursa ders ekle)
     public void addLessonToCourse(Lesson newLesson) {
         lessonsInCourse.add(newLesson);
-        System.out.println(newLesson+" Lesson added...");
+        System.out.println(newLesson+" -> Lesson added...");
     }
 
     //count lesson in the course (Kurstaki Ders Sayısı)
@@ -52,7 +70,7 @@ public class Course {
 
 
     //total lesson minutes in the course (Toplam kurs dakkası)
-    public int totalLessonMinutesCourse() {
+    private int totalLessonMinutesCourse() {
         double totalMinute = 0;
         for(Lesson lesson : lessonsInCourse ){
             totalMinute += lesson.getLessonMinute();
@@ -71,17 +89,12 @@ public class Course {
         }else return false;
     }
 
-
-
-    //add students to course (Kursa Öğrenci Ekle)
-    public void addStudentsToCourse(Student newStudent) {
-        if(controlCoursePublish()){
-            studentsInTheCourse.add(newStudent);
-            System.out.println(newStudent+" Student added...");
-        }
+    //GETTER
+    public ArrayList<Student> getStudentsInTheCourse() {
+        return studentsInTheCourse;
     }
 
-
-
-
+    public String getCourseTitle() {
+        return courseTitle;
+    }
 }
